@@ -24,3 +24,15 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+    key_counts = {}
+    with open("files/input/data.csv", "r") as file:
+        for line in file:
+            columns = line.strip().split("\t")
+            dict_entries = columns[4].split(",")
+            for entry in dict_entries:
+                key, _ = entry.split(":")
+                if key in key_counts:
+                    key_counts[key] += 1
+                else:
+                    key_counts[key] = 1
+    return key_counts
